@@ -16,15 +16,14 @@ function sumFibs(num) {
   return (sum + 2);
 }
 
-function cacheFunction() {
+function cacheFunction(memoizedFn) {
   const cache = {};
   return (n) => {
     if (n in cache) {
       return cache[n];
     }
-    const storeValue = sumFibs(n);
-    cache[n] = storeValue;
-    return storeValue;
+    cache[n] = memoizedFn(n);
+    return cache[n];
   };
 }
 
