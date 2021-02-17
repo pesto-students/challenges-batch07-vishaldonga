@@ -6,9 +6,9 @@ function balancedBraces(...args) {
   const endBracketArray = [')', ']', '}'];
 
   for (const char of str) {
-    if (startBracketArray.indexOf(char) > -1) {
+    if (startBracketArray.includes(char)) {
       stack.push(char);
-    } else if (endBracketArray.indexOf(char) > -1) {
+    } else if (endBracketArray.includes(char)) {
       const poppedElement = stack.pop();
       if (!(endBracketArray.indexOf(char) === startBracketArray.indexOf(poppedElement))) {
         return false;
