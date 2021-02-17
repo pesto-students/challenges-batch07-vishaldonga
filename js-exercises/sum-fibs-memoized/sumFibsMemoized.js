@@ -1,6 +1,6 @@
 function sumFibs(num) {
   if (!num || typeof num !== 'number' || num <= 0) return false;
-  if (num === 1 || num === 2) return num;
+  if (num === 1) return 2;
   let i = 1;
   let j = 1;
   let nextNumber = 0;
@@ -18,12 +18,12 @@ function sumFibs(num) {
 
 function cacheFunction(memoizedFn) {
   const cache = {};
-  return (n) => {
-    if (n in cache) {
-      return cache[n];
+  return (num) => {
+    if (num in cache) {
+      return cache[num];
     }
-    cache[n] = memoizedFn(n);
-    return cache[n];
+    cache[num] = memoizedFn(num);
+    return cache[num];
   };
 }
 
