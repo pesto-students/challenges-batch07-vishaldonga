@@ -1,15 +1,15 @@
 function duplicateLetters(...args) {
   try {
     if (args) {
-      //  Converting given string to sorted array
+      // Converting given string to sorted array
       const mainArray = [...args][0].split('').sort();
       let count = 1;
       let maxCount = 1;
       const tempArray = [];
-      //  Checking every character and its count
-      for (let i = 0; i < mainArray.length; i += 1) {
-        if (tempArray.indexOf(mainArray[i]) < 0) {
-          tempArray.push(mainArray[i]);
+      // Checking every character and its count
+      for (const char of mainArray) {
+        if (tempArray.indexOf(char) < 0) {
+          tempArray.push(char);
           count = 1;
         } else {
           count += 1;
