@@ -3,16 +3,16 @@ const allSettled = (promises) => {
   let promiseCounter = 0;
   return new Promise((resolve, reject) => {
     try {
-      promises.forEach(element => {
+      promises.forEach((element) => {
         Promise.resolve(element).then((res) => {
-          promised.push(res);
+          promised.push({ status: 'fulfilled', value: res });
           promiseCounter += 1;
           if (promiseCounter === promises.length) {
             resolve(promised);
           }
         })
           .catch((error) => {
-            promised.push(error);
+            promised.push({ status: 'rejected', reason: error });
             promiseCounter += 1;
             if (promiseCounter === promises.length) {
               resolve(promised);

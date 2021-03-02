@@ -1,20 +1,16 @@
 import { allSettled } from './allSettled';
 
 describe('allSettled', () => {
-  test('Function should return a Promise', () => {
-    expect(allSettled() instanceof Promise).toBe(true);
-  });
+  test('Promise call should return an array of value and promise status', () => {
+    const promise1 = Promise.resolve(3);
+    const promise2 = new Promise((resolve, reject) => setTimeout(reject, 100, 'foo'));
+    const promises = [promise1, promise2];
 
-  test('Promise call should return an array of values from promises', () => {
-    const p1 = Promise.resolve(33);
-    const p2 = Promise.resolve(66);
-    const p3 = 99;
-    const p4 = Promise.reject(new Error('an error'));
-    return expect(allSettled([p1, p2, p3, p4])).resolves.toEqual([
-      33,
-      66,
-      99,
-      new Error('an error'),
-    ]);
+    const resultArray = ['fulfilled', 'rejected'];
+
+    allSettled(promises)
+      .then((results) => results.forEach((result, index) => {
+        expect(result.status).toEqual(resultArray[index]);
+      }));
   });
 });
