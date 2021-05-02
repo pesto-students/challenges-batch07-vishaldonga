@@ -12,12 +12,13 @@ function findAllTriplets(arr, sum) {
     throw new Error('Invalid Parameters');
   }
   const resultArray = [];
-  for (const i of arr.slice(0, arr.length - 2)) {
-    for (const j of arr.slice(0, arr.length - 1)) {
-      for (const k of arr) {
-        if ((i + j + k) === sum) {
-          const array = [i, j, k].sort();
-          if (!JSON.stringify(resultArray).includes(JSON.stringify(array)) && array.length === 3) {
+  for (const [iIndex, iVal] of arr.slice(0, arr.length - 2).entries()) {
+    for (const [jIndex, jVal] of arr.slice(0, arr.length - 1).entries()) {
+      for (const [kIndex, kVal] of arr.entries()) {
+        // eslint-disable-next-line max-len
+        if (((iVal + jVal + kVal) === sum) && (iIndex !== jIndex) && (iIndex !== kIndex) && (jIndex !== kIndex)) {
+          const array = [iVal, jVal, kVal].sort();
+          if (!JSON.stringify(resultArray).includes(JSON.stringify(array))) {
             resultArray.push(array);
           }
         }
