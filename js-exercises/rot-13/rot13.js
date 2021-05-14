@@ -6,14 +6,13 @@ function rot13(str) {
       if (char.charCodeAt(0) <= 77) {
         arrChar.push(String.fromCharCode(char.charCodeAt(0) + 13));
       } else {
-        arrChar.push(String.fromCharCode(char.charCodeAt(0) - 26 + 13));
+        arrChar.push(String.fromCharCode(char.charCodeAt(0) - 13));
       }
     } else {
       arrChar.push(char);
     }
   }
-  const decodedString = arrChar.join('');
-  return decodedString;
+  return arrChar.join('');
 }
 
 export {
