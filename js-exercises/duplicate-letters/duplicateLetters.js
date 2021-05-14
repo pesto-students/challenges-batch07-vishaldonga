@@ -29,6 +29,31 @@ function duplicateLetters(...args) {
   }
 }
 
+//Optimised Solution
+// function duplicateLetters(str) {
+//   if (typeof str !== "string") {
+//     throw new Error("Invalid type");
+//   }
+//   const arrTemp = [];
+//   let maxCount = 1;
+//   for (const char of str) {
+//     if (arrTemp.indexOf(char) > -1) {
+//       arrTemp[char] += 1;
+//     } else {
+//       arrTemp.push(char);
+//       arrTemp[char] = 1;
+//     }
+//     if (arrTemp[char] > maxCount) {
+//       maxCount = arrTemp[char];
+//     }
+//   }
+//   if (maxCount === 1) {
+//     return false;
+//   }
+//   return maxCount;
+// }
+/////////////
+
 export {
   duplicateLetters,
 };
